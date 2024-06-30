@@ -1,0 +1,9 @@
+.badge {
+  --badge-main-bg-color: #00a3e0;
+
+  background-color: var(--badge-main-bg-color);
+  border-radius: 0.5rem;
+  font-size: var(--text-sm);
+  color: var(--main-text-color);
+  padding: 0.25rem 0.5rem;
+}

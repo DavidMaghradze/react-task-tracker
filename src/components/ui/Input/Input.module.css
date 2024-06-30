@@ -1,0 +1,16 @@
+.input {
+  outline: none;
+  border: 1px solid var(--secondary-border-color);
+  padding: 0.25rem;
+  width: 100%;
+  border-radius: var(--rounded);
+  transition: border ease-in-out .1s;
+
+  &:hover, &:focus-within {
+    border-color: var(--main-border-color);
+  }
+  
+  &::placeholder {
+    color: var(--placeholder-text-color);
+  }
+}

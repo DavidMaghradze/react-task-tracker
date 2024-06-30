@@ -1,0 +1,6 @@
+.label {
+  display: inline-block;
+  font-size: var(--text-sm);
+  margin-bottom: 0.25rem;
+  color: var(--secondary-text-color);
+}

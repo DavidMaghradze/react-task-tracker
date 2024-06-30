@@ -1,0 +1,10 @@
+.tasksEmpty {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  height: var(--tasks-empty-height);
+  color: var(--secondary-text-color);
+  width: 100%;
+}

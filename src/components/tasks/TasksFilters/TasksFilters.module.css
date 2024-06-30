@@ -1,0 +1,8 @@
+.tasksFilters {
+  margin-bottom: 1rem;
+  justify-content: space-between;
+
+  .status {
+    width: 200px;
+  }
+}

@@ -1,0 +1,39 @@
+
+.taskItem {
+  --task-item-bg-color: #fff;
+
+  background-color: var(--task-item-bg-color);
+  padding: 1rem;
+  border-radius: var(--rounded-lg);
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--main-border-color);
+
+    .title {
+      font-size: var(--text-lg);
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    button {
+      display: inline-flex;
+      height: 2rem;
+      align-items: center;
+
+      svg {
+        width: 1rem;
+        height: 1rem;
+        margin-right: 0.25rem;
+      }
+    }
+  }
+}
