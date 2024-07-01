@@ -1,9 +1,13 @@
+.taskListContainer {
+  padding-top: 0.5rem;
+}
+
 .taskList {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.newTaskBtn {
-  margin: 1rem 0;
+.addNewTaskBtn {
+  margin-bottom: 0.5rem;
 }

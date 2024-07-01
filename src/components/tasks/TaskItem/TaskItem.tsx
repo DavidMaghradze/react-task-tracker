@@ -1,11 +1,11 @@
-import type { Task } from "types/tasks.types"
+import type { Task } from 'types/tasks.types'
 import styles from './TaskItem.module.css'
-import Button from "components/ui/Button"
-import { CheckIcon, EditIcon, TrashIcon } from "icons"
-import { ButtonVariant } from "components/ui/Button/Button.types"
-import Badge from "components/ui/Badge"
-import { useTasks } from "providers/TasksProvider"
-import { Modal } from "providers/TasksProvider.types"
+import Button from 'components/ui/Button'
+import { CheckIcon, EditIcon, TrashIcon } from 'icons'
+import { ButtonVariant } from 'components/ui/Button/Button.types'
+import Badge from 'components/ui/Badge'
+import { useTasks } from 'providers/TasksProvider'
+import { Modal } from 'providers/TasksProvider.types'
 
 interface TaskItemProps {
   task: Task
@@ -23,24 +23,32 @@ const TaskItem = ({ task }: TaskItemProps) => {
         </div>
         <div className={styles.actions}>
           {!task.completed && (
-            <Button variant={ButtonVariant.PRIMARY} onClick={() => {
-              handleEditTaskClick({ ...task, completed: true }, task.id)
-            }}>
+            <Button
+              variant={ButtonVariant.PRIMARY}
+              onClick={() => {
+                handleEditTaskClick({ ...task, completed: true }, task.id)
+              }}
+            >
               <CheckIcon />
               Mark as complete
             </Button>
           )}
-          <Button onClick={() => {
-            openModal(Modal.EDIT_TASK)
-            setCurrentTaskId(task.id)
-          }}>
+          <Button
+            onClick={() => {
+              openModal(Modal.EDIT_TASK)
+              setCurrentTaskId(task.id)
+            }}
+          >
             <EditIcon />
             Edit
           </Button>
-          <Button variant={ButtonVariant.DANGER} onClick={() => {
-            openModal(Modal.DELETE_TASK)
-            setCurrentTaskId(task.id)
-          }}>
+          <Button
+            variant={ButtonVariant.DANGER}
+            onClick={() => {
+              openModal(Modal.DELETE_TASK)
+              setCurrentTaskId(task.id)
+            }}
+          >
             <TrashIcon />
             Delete
           </Button>

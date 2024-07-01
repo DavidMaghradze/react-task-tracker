@@ -14,26 +14,26 @@ const Input = ({
   defaultValue = '',
   onChange,
   placeholder = '',
-  className
+  className,
 }: InputProps) => {
   const [value, setValue] = useState(defaultValue)
 
   const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
     setValue(e.currentTarget.value)
 
-    if(onChange) onChange(e)
+    if (onChange) onChange(e)
   }
 
   return (
     <input
       name={name}
       value={value}
-      onChange={handleInputChange} 
+      onChange={handleInputChange}
       className={`${styles.input} ${className}`}
       placeholder={placeholder}
       autoFocus
     />
-  ) 
+  )
 }
 
 export default Input

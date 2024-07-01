@@ -1,6 +1,6 @@
-import Input from "components/ui/Input"
+import Input from 'components/ui/Input'
 import styles from './TasksSearch.module.css'
-import { useTasks } from "providers/TasksProvider"
+import { useTasks } from 'providers/TasksProvider'
 
 const TasksSearch = () => {
   const { searchTerm, setSearchTerm } = useTasks()

@@ -5,7 +5,6 @@ import { ButtonVariant } from 'components/ui/Button/Button.types'
 import useTasksFilters from './useTasksFilters'
 import { TASK_STATUS_OPTIONS } from './TasksFilters.consts'
 
-
 const TasksFilters = () => {
   const { filters, setFilters, handleSubmit } = useTasksFilters()
 
@@ -16,39 +15,37 @@ const TasksFilters = () => {
         <div>
           <div className={styles.status}>
             <Select
+              data-testid="tasks-filters-status"
               value={filters.status}
               //@ts-ignore
               onChange={(val) => setFilters({ status: val })}
               //@ts-ignore
               options={TASK_STATUS_OPTIONS}
               styles={{
-              control: (styles) => ({
-                ...styles,
-                cursor: 'pointer'
-              }),
-              input: (styles) => ({
-                ...styles,
-                singleValue: 'var(--text-sm)'
-              }),
-              option: (styles) => ({
-                ...styles,
-                cursor: 'pointer',
-                fontSize: 'var(--text-sm)'
-              }),
-              placeholder: (styles) => ({
-                ...styles,
-                fontSize: 'var(--text-base)'
-              })
+                control: (styles) => ({
+                  ...styles,
+                  cursor: 'pointer',
+                }),
+                input: (styles) => ({
+                  ...styles,
+                  singleValue: 'var(--text-sm)',
+                }),
+                option: (styles) => ({
+                  ...styles,
+                  cursor: 'pointer',
+                  fontSize: 'var(--text-sm)',
+                }),
+                placeholder: (styles) => ({
+                  ...styles,
+                  fontSize: 'var(--text-base)',
+                }),
               }}
-              placeholder="Select status" 
+              placeholder="Select status"
             />
           </div>
         </div>
       </div>
-      <Button 
-        variant={ButtonVariant.PRIMARY}
-        onClick={handleSubmit}
-      >
+      <Button variant={ButtonVariant.PRIMARY} onClick={handleSubmit}>
         Apply Filters
       </Button>
     </div>

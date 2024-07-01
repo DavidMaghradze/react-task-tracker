@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from 'react'
 import styles from './TextArea.module.css'
 
 interface TextAreaProps {
@@ -8,13 +8,18 @@ interface TextAreaProps {
   placeholder?: string
 }
 
-const TextArea = ({ name, defaultValue, onChange, placeholder }: TextAreaProps) => {
+const TextArea = ({
+  name,
+  defaultValue,
+  onChange,
+  placeholder,
+}: TextAreaProps) => {
   const [value, setValue] = useState(defaultValue)
 
   const handleInputChange = (e: React.FormEvent<HTMLTextAreaElement>) => {
     setValue(e.currentTarget.value)
 
-    if(onChange) onChange(e)
+    if (onChange) onChange(e)
   }
 
   return (

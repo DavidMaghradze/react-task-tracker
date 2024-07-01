@@ -6,7 +6,7 @@ export interface SelectOption {
 export enum TaskStatus {
   ALL = 'all',
   COMPLETED = 'completed',
-  INCOMPLETE = 'incomplete'
+  INCOMPLETE = 'incomplete',
 }
 
 export interface TaskFilters {

@@ -5,7 +5,6 @@ import styles from './TasksEmpty.module.css'
 import { useTasks } from 'providers/TasksProvider'
 
 const TasksEmpty = () => {
-
   const { openModal } = useTasks()
 
   return (

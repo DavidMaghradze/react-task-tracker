@@ -1,4 +1,4 @@
-import type { Task, TaskInput } from "types/tasks.types"
+import type { Task, TaskInput } from 'types/tasks.types'
 
 export interface TasksState {
   [key: string]: Task
@@ -7,12 +7,12 @@ export interface TasksState {
 export enum Modal {
   ADD_TASK = 'addTask',
   EDIT_TASK = 'editTask',
-  DELETE_TASK = 'deleteTask'
+  DELETE_TASK = 'deleteTask',
 }
 
 export interface ModalsState {
-  [Modal.ADD_TASK]: boolean,
-  [Modal.EDIT_TASK]: boolean,
+  [Modal.ADD_TASK]: boolean
+  [Modal.EDIT_TASK]: boolean
   [Modal.DELETE_TASK]: boolean
 }
 

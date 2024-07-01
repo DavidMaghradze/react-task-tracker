@@ -1,6 +1,6 @@
-import { ReactNode } from "react"
+import { ReactNode } from 'react'
 import styles from './Button.module.css'
-import { ButtonVariant } from "./Button.types"
+import { ButtonVariant } from './Button.types'
 
 interface ButtonProps {
   children: ReactNode
@@ -9,8 +9,12 @@ interface ButtonProps {
   className?: string
 }
 
-const Button = ({ children, onClick, variant = ButtonVariant.DEFAULT, className = '' }: ButtonProps) => {
-
+const Button = ({
+  children,
+  onClick,
+  variant = ButtonVariant.DEFAULT,
+  className = '',
+}: ButtonProps) => {
   const variantClassNames = styles[variant] || ''
 
   return (

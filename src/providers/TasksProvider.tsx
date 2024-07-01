@@ -1,16 +1,28 @@
-import { createContext, useCallback, useContext, useMemo, useState } from "react"
-import type { ReactNode } from "react"
-import { v4 as uuidv4 } from 'uuid';
-import { type Modal, type ModalsState, type TasksContextResponse, type TasksState } from "./TasksProvider.types"
-import type { Task, TaskInput } from "types/tasks.types"
-import { addItemToLS, getItemFromLS } from "utils/localStorageUtils";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react'
+import type { ReactNode } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+import { addItemToLS, getItemFromLS } from 'utils/localStorageUtils'
+
+import type {
+  Modal,
+  ModalsState,
+  TasksContextResponse,
+  TasksState,
+} from './TasksProvider.types'
+import type { Task, TaskInput } from 'types/tasks.types'
 
 const TasksContext = createContext<TasksContextResponse>({
   tasks: [],
   modalsOpened: {
     addTask: false,
     editTask: false,
-    deleteTask: false
+    deleteTask: false,
   },
   closeModal: () => {},
   openModal: () => {},
@@ -33,61 +45,74 @@ interface TasksProviderProps {
 
 const TasksProvider = ({ children }: TasksProviderProps) => {
   const [tasks, setTasks] = useState<TasksState>(getItemFromLS('tasks') || {})
-  const [modalsOpened, setModalsOpened] = useState<ModalsState>({ addTask: false, editTask: false, deleteTask: false })
+  const [modalsOpened, setModalsOpened] = useState<ModalsState>({
+    addTask: false,
+    editTask: false,
+    deleteTask: false,
+  })
   const [currentTaskId, setCurrentTaskId] = useState<string>('')
   const [searchTerm, setSearchTerm] = useState('')
 
   const tasksList = useMemo(() => Object.values(tasks), [tasks])
 
   const openModal = (modal: Modal) => {
-    console.log('mod', modal)
     setModalsOpened((currentModalsOpened) => ({
       ...currentModalsOpened,
-      [modal]: true
+      [modal]: true,
     }))
   }
 
-  const closeModal = (modal: Modal) => setModalsOpened((currentModalsOpened) => ({
-    ...currentModalsOpened,
-    [modal]: false
-  }))
+  const closeModal = (modal: Modal) =>
+    setModalsOpened((currentModalsOpened) => ({
+      ...currentModalsOpened,
+      [modal]: false,
+    }))
 
-  const handleAddTaskClick = useCallback((taskInput: TaskInput) => {
-    const taskId = uuidv4()
-    const updatedTasks = {
-      [taskId]: {
-        id: taskId,
-        completed: false,
-        order: tasksList.length + 1,
-        ...taskInput
-      },
-      ...tasks
-    }
-    setTasks(updatedTasks)
-    addItemToLS('tasks', JSON.stringify(updatedTasks))
-  }, [tasks, tasksList.length])
+  const handleAddTaskClick = useCallback(
+    (taskInput: TaskInput) => {
+      const taskId = uuidv4()
+      const updatedTasks = {
+        [taskId]: {
+          id: taskId,
+          completed: false,
+          order: tasksList.length + 1,
+          ...taskInput,
+        },
+        ...tasks,
+      }
+      setTasks(updatedTasks)
+      addItemToLS('tasks', JSON.stringify(updatedTasks))
+    },
+    [tasks, tasksList.length],
+  )
 
-  const handleEditTaskClick = useCallback((taskInput: TaskInput, taskId: string) => {
-    const updatedTasks = {...tasks}
-    const taskToUpdate = updatedTasks[taskId]
-    updatedTasks[taskId] = {
-      ...taskToUpdate,
-      ...taskInput
-    }
-    setTasks(updatedTasks)
-    addItemToLS('tasks', JSON.stringify(updatedTasks))
-  }, [tasks])
-  
-  const handleDeleteTaskClick = useCallback((taskId: string) => {
-    const updatedTasks = {...tasks}
+  const handleEditTaskClick = useCallback(
+    (taskInput: TaskInput, taskId: string) => {
+      const updatedTasks = { ...tasks }
+      const taskToUpdate = updatedTasks[taskId]
+      updatedTasks[taskId] = {
+        ...taskToUpdate,
+        ...taskInput,
+      }
+      setTasks(updatedTasks)
+      addItemToLS('tasks', JSON.stringify(updatedTasks))
+    },
+    [tasks],
+  )
 
-    if(updatedTasks[taskId]) {
-      delete updatedTasks[taskId]
-    }
+  const handleDeleteTaskClick = useCallback(
+    (taskId: string) => {
+      const updatedTasks = { ...tasks }
 
-    setTasks(updatedTasks)
-    addItemToLS('tasks', JSON.stringify(updatedTasks))
-  }, [tasks])
+      if (updatedTasks[taskId]) {
+        delete updatedTasks[taskId]
+      }
+
+      setTasks(updatedTasks)
+      addItemToLS('tasks', JSON.stringify(updatedTasks))
+    },
+    [tasks],
+  )
 
   const updateTasks = useCallback((tasks: Task[]) => {
     const updatedTasks: TasksState = {}
@@ -113,15 +138,10 @@ const TasksProvider = ({ children }: TasksProviderProps) => {
     getTaskById,
     updateTasks,
     searchTerm,
-    setSearchTerm
+    setSearchTerm,
   }
 
-  return (
-    <TasksContext.Provider value={value}>
-      {children}
-    </TasksContext.Provider>
-  )
-
+  return <TasksContext.Provider value={value}>{children}</TasksContext.Provider>
 }
 
 export default TasksProvider

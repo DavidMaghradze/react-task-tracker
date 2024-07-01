@@ -1,4 +1,6 @@
-*, ::before, ::after {
+*,
+::before,
+::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,7 +10,7 @@
 :root {
   /* bg colours */
   --header-bg-color: #00a3e0;
-  --header-bg-color-900: rgba(0, 163, 224, .9);
+  --header-bg-color-900: rgba(0, 163, 224, 0.9);
   --main-bg-color: #dddcdc;
   --modal-bg-color: #fff;
 
@@ -20,7 +22,7 @@
 
   /* border colours */
   --main-border-color: #00a3e0;
-  --main-border-color-500: rgba(0, 163, 224, .5);
+  --main-border-color-500: rgba(0, 163, 224, 0.5);
   --secondary-border-color: #e7e7e7;
 
   /* font sizes */
@@ -51,11 +53,20 @@
 main {
   height: calc(100vh - var(--header-height));
   background-color: var(--main-bg-color);
+  overflow-y: auto;
+  padding-bottom: 1rem;
 }
 
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 .flex {
